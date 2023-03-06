@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <!-- Fait par Rayane Merlin, Liam Lucas, Matéo Guenot -->
 
     <application
         android:allowBackup="true"
