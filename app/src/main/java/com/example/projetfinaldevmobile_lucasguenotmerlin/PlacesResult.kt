@@ -19,5 +19,12 @@ data class OpeningHours(
 
 data class Photo(
     val photo_reference: String
-)
+) {
+    fun getUrl(): Any {
+        return "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=$photoReference&key=AIzaSyDEwl14j3ZTu9pm1k5zuAGJzBwXIsiI9wI"
+    }
+
+    val photoReference: String
+        get() = photo_reference
+}
 
