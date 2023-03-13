@@ -6,6 +6,7 @@ data class PlacesResult(
 )
 
 data class Place(
+    val place_id: String,
     val name: String,
     val formatted_address: String,
     val opening_hours: OpeningHours?,
@@ -21,7 +22,7 @@ data class Photo(
     val photo_reference: String
 ) {
     fun getUrl(): Any {
-        return "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=$photoReference&key=AIzaSyDEwl14j3ZTu9pm1k5zuAGJzBwXIsiI9wI"
+        return "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=$photoReference&key=API_KEY"
     }
 
     val photoReference: String

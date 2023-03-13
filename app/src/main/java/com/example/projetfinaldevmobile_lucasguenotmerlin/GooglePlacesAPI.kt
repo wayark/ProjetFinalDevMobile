@@ -1,5 +1,6 @@
 package com.example.projetfinaldevmobile_lucasguenotmerlin
 
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -9,6 +10,14 @@ interface GooglePlacesAPI {
     fun searchRestaurants(
         @Query("query") query: String,
         @Query("type") type: String = "restaurant",
+        @Query("fields") fields: String = "place_id,name,formatted_address,rating,opening_hours,photos",
         @Query("key") apiKey: String
-    ): retrofit2.Call<PlacesResult>
+    ): Call<PlacesResult>
+
+    @GET("/maps/api/place/details/json")
+    fun getRestaurantDetails(
+        @Query("place_id") placeId: String,
+        @Query("key") apiKey: String
+    ): Call<PlaceDetailsResult>
+
 }

@@ -51,12 +51,10 @@ class RestaurantViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         // Handle click listeners on buttons
         // itemView.findViewById<Button>(R.id.like_button).setOnClickListener { /* handle like button click */ }
-        /*itemView.findViewById<Button>(R.id.profile_button).setOnClickListener {
+        itemView.findViewById<Button>(R.id.profile_button).setOnClickListener {
             val intent = Intent(itemView.context, RestaurantDetailActivity::class.java)
             intent.putExtra("place_id", restaurant.place_id)
             itemView.context.startActivity(intent)
         }
-
-         */
     }
 }

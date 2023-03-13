@@ -69,8 +69,6 @@ class RestaurantListActivity : AppCompatActivity() {
             val json = file.readText()
             val placesResult = Gson().fromJson(json, PlacesResult::class.java)
             val places = placesResult.results
-            Log.d("TEST", "Restaurants :  $places ")
-
             restaurantAdapter.addRestaurants(places)
 
             Log.d("RestaurantListActivity", "Loaded restaurants from cache")
@@ -80,31 +78,32 @@ class RestaurantListActivity : AppCompatActivity() {
             }
         } else {
             // Si le fichier JSON n'existe pas encore, on fait l'appel à l'API
-            val call = api.searchRestaurants("restaurants in Lyon", apiKey = "API_KEY")
-            call.enqueue(object : Callback<PlacesResult> {
-                override fun onResponse(call: Call<PlacesResult>, response: Response<PlacesResult>) {
-                    val placesResult = response.body()
-                    if (placesResult != null) {
-                        val places = placesResult.results
-                        restaurantAdapter.addRestaurants(places)
+        val call = api.searchRestaurants("restaurant in Lyon", apiKey = "API_KEY")
+        call.enqueue(object : Callback<PlacesResult> {
+            override fun onResponse(call: Call<PlacesResult>, response: Response<PlacesResult>) {
+                val placesResult = response.body()
+                if (placesResult != null) {
+                    val places = placesResult.results
+                    restaurantAdapter.addRestaurants(places)
 
-                        Log.d("RestaurantListActivity", "Loaded ${places.size} restaurants")
+                    Log.d("RestaurantListActivity", "Loaded ${places.size} restaurants")
 
-                        // Enregistrer les données dans le fichier JSON
-                        val json = Gson().toJson(placesResult)
-                        file.writeText(json)
+                    // Enregistrer les données dans le fichier JSON
+                    val json = Gson().toJson(placesResult)
+                    file.writeText(json)
 
-                        isLoading = false
-                        if (places.isEmpty()) {
-                            isLastPage = true
-                        }
+                    isLoading = false
+                    if (places.isEmpty()) {
+                        isLastPage = true
                     }
                 }
+            }
 
-                override fun onFailure(call: Call<PlacesResult>, t: Throwable) {
-                    // Handle failure
-                }
-            })
+            override fun onFailure(call: Call<PlacesResult>, t: Throwable) {
+                // Handle failure
+            }
+        })
+
         }
     }
 }
