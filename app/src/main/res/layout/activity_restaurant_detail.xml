@@ -11,7 +11,7 @@
         <ImageView
             android:id="@+id/restaurantImage"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:scaleType="centerCrop"
             android:src="@drawable/restaurant" />
 
@@ -47,13 +47,97 @@
             android:text="Restaurant Website"
             android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/restaurantHours"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="Restaurant Hours"
-            android:textSize="16sp" />
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/restaurantOpeningHourMonday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_weight="1"
+                    android:text="Monday"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/restaurantOpeningHourTuesday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="Tuesday"
+                    android:layout_weight="1"
+                    android:textSize="16sp" />
+
+                </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/restaurantOpeningHourWednesday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_weight="1"
+                    android:text="Wednesday"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/restaurantOpeningHourThursday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_weight="1"
+                    android:text="Thursday"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/restaurantOpeningHourFriday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_weight="1"
+                    android:text="Friday"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/restaurantOpeningHourSaturday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_weight="1"
+                    android:text="Saturday"
+                    android:textSize="16sp" />
+
+                </LinearLayout>
+
+            <TextView
+                android:id="@+id/restaurantOpeningHourSunday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_weight="1"
+                android:text="Sunday"
+                android:textSize="16sp" />
+
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/restaurantRating"
@@ -68,21 +152,17 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <TextView
+            <ImageView
                 android:id="@+id/restaurantDelivery"
                 android:layout_width="150dp"
                 android:layout_height="match_parent"
-                android:layout_margin="16dp"
-                android:text="Restaurant Delivery"
-                android:textSize="16sp" />
+                android:layout_margin="16dp" />
 
-            <TextView
+            <ImageView
                 android:id="@+id/restaurantDineIn"
                 android:layout_width="150dp"
                 android:layout_height="match_parent"
-                android:layout_margin="16dp"
-                android:text="Restaurant Dine In"
-                android:textSize="16sp" />
+                android:layout_margin="16dp" />
 
         </LinearLayout>
 

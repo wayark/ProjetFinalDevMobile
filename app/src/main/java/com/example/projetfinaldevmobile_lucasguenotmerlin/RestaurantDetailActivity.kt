@@ -1,6 +1,10 @@
 package com.example.projetfinaldevmobile_lucasguenotmerlin
 
+import android.graphics.Color
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
 import android.os.Bundle
+import android.provider.ContactsContract.CommonDataKinds.Im
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
@@ -44,9 +48,30 @@ class RestaurantDetailActivity : AppCompatActivity() {
                             findViewById<TextView>(R.id.restaurantAddress).text = restaurant.formatted_address
                             findViewById<TextView>(R.id.restaurantPhone).text = restaurant.formatted_phone_number
                             findViewById<TextView>(R.id.restaurantWebsite).text = restaurant.website
-                            // Ajouter les heures d'ouverture
-                            findViewById<TextView>(R.id.restaurantDelivery).text = restaurant.delivery.toString()
-                            findViewById<TextView>(R.id.restaurantDineIn).text = restaurant.dine_in.toString()
+
+                            restaurant.opening_hours?.weekday_text?.get(0)
+                                ?.let { findViewById<TextView>(R.id.restaurantOpeningHourMonday).text = it }
+                            restaurant.opening_hours?.weekday_text?.get(1)
+                                ?.let { findViewById<TextView>(R.id.restaurantOpeningHourTuesday).text = it }
+                            restaurant.opening_hours?.weekday_text?.get(2)
+                                ?.let { findViewById<TextView>(R.id.restaurantOpeningHourWednesday).text = it }
+                            restaurant.opening_hours?.weekday_text?.get(3)
+                                ?.let { findViewById<TextView>(R.id.restaurantOpeningHourThursday).text = it }
+                            restaurant.opening_hours?.weekday_text?.get(4)
+                                ?.let { findViewById<TextView>(R.id.restaurantOpeningHourFriday).text = it }
+                            restaurant.opening_hours?.weekday_text?.get(5)
+                                ?.let { findViewById<TextView>(R.id.restaurantOpeningHourSaturday).text = it }
+                            restaurant.opening_hours?.weekday_text?.get(6)
+                                ?.let { findViewById<TextView>(R.id.restaurantOpeningHourSunday).text = it }
+
+                            if (restaurant.delivery == true) {
+                                val image = resources.getDrawable(R.drawable.delivery)
+                                findViewById<ImageView>(R.id.restaurantDelivery).setImageDrawable(image)
+                            }
+                            if (restaurant.dine_in == true) {
+                                val image = resources.getDrawable(R.drawable.dine_in)
+                                findViewById<ImageView>(R.id.restaurantDineIn).setImageDrawable(image)
+                            }
                             findViewById<TextView>(R.id.restaurantRating).text = restaurant.rating.toString()
 
                         }
@@ -60,3 +85,4 @@ class RestaurantDetailActivity : AppCompatActivity() {
             })
     }
 }
+

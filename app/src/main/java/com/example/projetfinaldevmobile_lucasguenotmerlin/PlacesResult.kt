@@ -29,10 +29,9 @@ class Geometry {
 }
 
 data class OpeningHours(
-    val open_now: Boolean
-) {
-    val weekday_text: Any? = null
-}
+    val open_now: Boolean,
+    val weekday_text: List<String>?
+)
 
 data class Photo(
     val photo_reference: String
