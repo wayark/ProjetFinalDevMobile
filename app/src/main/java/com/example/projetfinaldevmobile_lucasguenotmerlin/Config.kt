@@ -1,6 +1,3 @@
 package com.example.projetfinaldevmobile_lucasguenotmerlin
 
-class PlaceDetailsResult {
-    val result: Place? = null
-
-}
+internal val API_KEY = "API_KEY"

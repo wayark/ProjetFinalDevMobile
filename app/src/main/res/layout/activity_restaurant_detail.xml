@@ -3,4 +3,89 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/restaurantImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/restaurant" />
+
+        <TextView
+            android:id="@+id/restaurantName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="Restaurant Name"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/restaurantAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="Restaurant Address"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/restaurantPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="Restaurant Phone"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/restaurantWebsite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="Restaurant Website"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/restaurantHours"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="Restaurant Hours"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/restaurantRating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="Restaurant Rating"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/restaurantDelivery"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:text="Restaurant Delivery"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/restaurantDineIn"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:text="Restaurant Dine In"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

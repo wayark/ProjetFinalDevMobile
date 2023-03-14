@@ -78,7 +78,7 @@ class RestaurantListActivity : AppCompatActivity() {
             }
         } else {
             // Si le fichier JSON n'existe pas encore, on fait l'appel à l'API
-        val call = api.searchRestaurants("restaurant in Lyon", apiKey = "API_KEY")
+        val call = api.searchRestaurants("restaurant in Lyon", apiKey = API_KEY)
         call.enqueue(object : Callback<PlacesResult> {
             override fun onResponse(call: Call<PlacesResult>, response: Response<PlacesResult>) {
                 val placesResult = response.body()
