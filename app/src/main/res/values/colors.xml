@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="ColorPrim">#252525</color>
+    <color name="ColorSec">#53CF6E</color>
+    <color name="ColorTert">#E0E0E0</color>
+
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>

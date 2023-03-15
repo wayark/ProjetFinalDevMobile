@@ -48,29 +48,22 @@ class RestaurantDetailActivity : AppCompatActivity() {
                             findViewById<TextView>(R.id.restaurantAddress).text = restaurant.formatted_address
                             findViewById<TextView>(R.id.restaurantPhone).text = restaurant.formatted_phone_number
                             findViewById<TextView>(R.id.restaurantWebsite).text = restaurant.website
-
-                            restaurant.opening_hours?.weekday_text?.get(0)
-                                ?.let { findViewById<TextView>(R.id.restaurantOpeningHourMonday).text = it }
-                            restaurant.opening_hours?.weekday_text?.get(1)
-                                ?.let { findViewById<TextView>(R.id.restaurantOpeningHourTuesday).text = it }
-                            restaurant.opening_hours?.weekday_text?.get(2)
-                                ?.let { findViewById<TextView>(R.id.restaurantOpeningHourWednesday).text = it }
-                            restaurant.opening_hours?.weekday_text?.get(3)
-                                ?.let { findViewById<TextView>(R.id.restaurantOpeningHourThursday).text = it }
-                            restaurant.opening_hours?.weekday_text?.get(4)
-                                ?.let { findViewById<TextView>(R.id.restaurantOpeningHourFriday).text = it }
-                            restaurant.opening_hours?.weekday_text?.get(5)
-                                ?.let { findViewById<TextView>(R.id.restaurantOpeningHourSaturday).text = it }
-                            restaurant.opening_hours?.weekday_text?.get(6)
-                                ?.let { findViewById<TextView>(R.id.restaurantOpeningHourSunday).text = it }
+                            if (restaurant.opening_hours?.open_now == true) {
+                                findViewById<TextView>(R.id.restaurantOpeningHour).text = "Ouvert"
+                            } else {
+                                findViewById<TextView>(R.id.restaurantOpeningHour).text = "Fermé"
+                                findViewById<TextView>(R.id.restaurantOpeningHour).background = resources.getDrawable(R.drawable.rounded_corner_red)
+                            }
 
                             if (restaurant.delivery == true) {
                                 val image = resources.getDrawable(R.drawable.delivery)
                                 findViewById<ImageView>(R.id.restaurantDelivery).setImageDrawable(image)
+                                findViewById<TextView>(R.id.restaurantDeliveryText).text = "Livraison"
                             }
                             if (restaurant.dine_in == true) {
                                 val image = resources.getDrawable(R.drawable.dine_in)
                                 findViewById<ImageView>(R.id.restaurantDineIn).setImageDrawable(image)
+                                findViewById<TextView>(R.id.restaurantDineInText).text = "À emporter"
                             }
                             findViewById<TextView>(R.id.restaurantRating).text = restaurant.rating.toString()
 
