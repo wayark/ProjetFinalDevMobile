@@ -41,17 +41,24 @@ class RestaurantViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         // Bind restaurant data to view
         itemView.findViewById<TextView>(R.id.restaurant_name).text = restaurant.name
         itemView.findViewById<TextView>(R.id.restaurant_address).text = restaurant.formatted_address
-        itemView.findViewById<TextView>(R.id.restaurant_open_now).text = if (restaurant.opening_hours?.open_now == true) "Open now" else "Closed"
-
+        if (restaurant.opening_hours?.open_now == true){
+            itemView.findViewById<TextView>(R.id.restaurant_open_now).text = "Ouvert"
+            itemView.findViewById<TextView>(R.id.restaurant_open_now).background = itemView.resources.getDrawable(R.drawable.rounded_corner)
+        } else {
+            itemView.findViewById<TextView>(R.id.restaurant_open_now).text = "Fermé"
+            itemView.findViewById<TextView>(R.id.restaurant_open_now).background = itemView.resources.getDrawable(R.drawable.rounded_corner_red)
+        }
         // Load restaurant image using Picasso
         Log.d("RestaurantViewHolder", "Loading image for ${restaurant.name} from ${restaurant.photos?.get(0)?.getUrl()}")
         val photoUrl = restaurant.photos?.get(0)?.getUrl()?.toString()
         Picasso.get().load(photoUrl).into(restaurantImage)
 
+        Picasso.get().load(photoUrl).into(itemView.findViewById<ImageView>(R.id.profile_button))
+
 
         // Handle click listeners on buttons
         // itemView.findViewById<Button>(R.id.like_button).setOnClickListener { /* handle like button click */ }
-        itemView.findViewById<Button>(R.id.profile_button).setOnClickListener {
+        itemView.findViewById<ImageView>(R.id.profile_button).setOnClickListener {
             val intent = Intent(itemView.context, RestaurantDetailActivity::class.java)
             intent.putExtra("place_id", restaurant.place_id)
             itemView.context.startActivity(intent)
