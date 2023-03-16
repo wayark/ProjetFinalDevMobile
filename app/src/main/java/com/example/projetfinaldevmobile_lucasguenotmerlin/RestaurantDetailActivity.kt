@@ -44,6 +44,7 @@ class RestaurantDetailActivity : AppCompatActivity() {
 
                             val photoUrl = restaurant.photos?.get(0)?.getUrl()?.toString()
                             Picasso.get().load(photoUrl).into(findViewById<ImageView>(R.id.restaurantImage))
+
                             findViewById<TextView>(R.id.restaurantName).text = restaurant.name
                             findViewById<TextView>(R.id.restaurantAddress).text = restaurant.formatted_address
                             findViewById<TextView>(R.id.restaurantPhone).text = restaurant.formatted_phone_number
@@ -67,6 +68,20 @@ class RestaurantDetailActivity : AppCompatActivity() {
                             }
                             findViewById<TextView>(R.id.restaurantRating).text = restaurant.rating.toString()
 
+                            val allPhotos = restaurant.photos
+                            if (allPhotos != null) {
+                                var i = 1
+                                for (photo in allPhotos) {
+                                    if (i > 4) {
+                                        break
+                                    }
+                                    val photoUrl = photo.getUrl()?.toString()
+                                    val imageView = findViewById<ImageView>(resources.getIdentifier("restaurantImage$i", "id", packageName))
+                                    Picasso.get().load(photoUrl).into(imageView)
+                                    i++
+
+                                }
+                            }
                         }
 
                     }
