@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "439921246587",
-    "project_id": "toctoc-5e50e",
-    "storage_bucket": "toctoc-5e50e.appspot.com"
+    "project_number": "594757971599",
+    "project_id": "databasemobile-4910e",
+    "storage_bucket": "databasemobile-4910e.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:439921246587:android:67110301837f2222bf3dde",
+        "mobilesdk_app_id": "1:594757971599:android:c197832801ff1efa444afa",
         "android_client_info": {
           "package_name": "com.example.projetfinaldevmobile_lucasguenotmerlin"
         }
       },
       "oauth_client": [
         {
-          "client_id": "439921246587-6ijdimi2vfm2tn5k96bv1n3gujdr7mbj.apps.googleusercontent.com",
+          "client_id": "594757971599-taugg0hvh0ao8igqc51r28tsfntv1ih5.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAc5vmWlIvAH1VR8tAMyn7T1jccjwL03pw"
+          "current_key": "AIzaSyDIbTfLsDq-Qnx0qMgvX8RUCbZvdqrv-FU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "439921246587-6ijdimi2vfm2tn5k96bv1n3gujdr7mbj.apps.googleusercontent.com",
+              "client_id": "594757971599-taugg0hvh0ao8igqc51r28tsfntv1ih5.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
