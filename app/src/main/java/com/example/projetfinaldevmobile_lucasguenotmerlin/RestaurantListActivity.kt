@@ -6,6 +6,8 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
@@ -32,6 +34,8 @@ class RestaurantListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_restaurant_list)
+
+        test()
 
         // Set up RecyclerView and adapter
         restaurantList = findViewById(R.id.restaurant_recycler_view)
@@ -104,6 +108,25 @@ class RestaurantListActivity : AppCompatActivity() {
             }
         })
 
+        }
+    }
+
+    public fun test() {
+        val user = Firebase.auth.currentUser
+        user?.let {
+            // Name, email address, and profile photo Url
+            val name = it.displayName
+            val email = it.email
+            val photoUrl = it.photoUrl
+
+            // Check if user's email is verified
+            val emailVerified = it.isEmailVerified
+
+            // The user's ID, unique to the Firebase project. Do NOT use this value to
+            // authenticate with your backend server, if you have one. Use
+            // FirebaseUser.getIdToken() instead.
+            val uid = it.uid
+            Log.d("InfoUser", "User: $name, $email, $photoUrl, $emailVerified, $uid")
         }
     }
 }
