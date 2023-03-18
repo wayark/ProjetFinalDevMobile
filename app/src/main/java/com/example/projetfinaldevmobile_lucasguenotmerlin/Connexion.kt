@@ -7,50 +7,66 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.startActivity
-import com.google.firebase.FirebaseApp
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
-import com.google.firebase.database.ktx.getValue
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 class Connexion: AppCompatActivity() {
 
-    val database = Firebase.database("https://devmobile-877ca-default-rtdb.europe-west1.firebasedatabase.app/")
-    val myRef = database.getReference("Utilisateurs")
+    val database = Firebase.database("https://devmobile-877ca-default-rtdb.europe-west1.firebasedatabase.app/").reference
+    val myRef = database.child("utilisateurs")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_connexion)
 
-        myRef.setValue("Hello, World!")
-
-        // Read from the database
-        myRef.addValueEventListener(object: ValueEventListener {
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                val value = snapshot.getValue<String>()
-                Log.d(TAG, "Value is: " + value)
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Log.w(TAG, "Failed to read value.", error.toException())
-            }
-
-        })
-
-
         val button = findViewById<Button>(R.id.btnConnexion)
         button.setOnClickListener {
 
-            val pseudo = findViewById<EditText>(R.id.pseudo)
-            val password = findViewById<EditText>(R.id.password)
+            val pseudo = findViewById<EditText>(R.id.pseudo).text.toString()
+            val password = findViewById<EditText>(R.id.password).text.toString()
 
+            myRef.orderByChild("pseudo")
+                .addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        if (snapshot.exists()) {
+                            for (userSnapshot in snapshot.children) {
+                                val userPseudo = userSnapshot.child("pseudo").getValue(String::class.java)
+                                if (pseudo == userPseudo) {
+                                    // L'utilisateur existe, lance RestaurantListActivity avec pseudo en extra
+                                    val intent = Intent(this@Connexion, RestaurantListActivity::class.java)
+                                    intent.putExtra("pseudo", pseudo)
+                                    startActivity(intent)
+                                    return
+                                }
+                            }
+
+                            // Si on arrive ici, l'utilisateur n'a pas été trouvé dans la base de données, on le créé
+                            val utilisateur = Utilisateur(pseudo, password)
+                            myRef.push().setValue(utilisateur)
+
+                            // Lance RestaurantListActivity avec pseudo en extra
+                            val intent = Intent(this@Connexion, RestaurantListActivity::class.java)
+                            intent.putExtra("pseudo", pseudo)
+                            startActivity(intent)
+                        } else {
+                            // La base de données est vide, on créé un nouvel utilisateur
+                            val utilisateur = Utilisateur(pseudo, password)
+                            myRef.push().setValue(utilisateur)
+
+                            // Lance RestaurantListActivity avec pseudo en extra
+                            val intent = Intent(this@Connexion, RestaurantListActivity::class.java)
+                            intent.putExtra("pseudo", pseudo)
+                            startActivity(intent)
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        Log.e(TAG, "onCancelled", error.toException())
+                    }
+                })
         }
     }
 }
+
+
