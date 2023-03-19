@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">ProjetFinalDevMobile - Lucas Guenot Merlin</string>
+    <string name="account">compte</string>
+    <string name="home">accueil</string>
+    <string name="liked">favoris</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
