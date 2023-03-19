@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/black">
 
 
     <ImageView
@@ -69,14 +70,14 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
-            android:id="@+id/like_button"
+            android:id="@+id/likeButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="end"
             android:layout_marginRight="20dp"
             android:src="@drawable/union" />
         <ImageView
-            android:id="@+id/profile_button"
+            android:id="@+id/profileButton"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_gravity="end"
