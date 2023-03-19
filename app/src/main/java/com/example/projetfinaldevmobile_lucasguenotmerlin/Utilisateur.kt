@@ -5,4 +5,15 @@ data class Utilisateur(
     val motDePasse: String = ""
 )
 
+data class RestLike(
+    val pseudo: String = "",
+    val id: String = "",
+    val idRestLike: String = "$pseudo|$id"
+){
+    override fun toString(): String {
+        return idRestLike
+    }
+
+}
+
 

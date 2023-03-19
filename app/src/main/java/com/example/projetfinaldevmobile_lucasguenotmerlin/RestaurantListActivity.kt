@@ -33,10 +33,13 @@ class RestaurantListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_restaurant_list)
 
+        // Récupère le pseudo de l'utilisateur
+        val pseudo = intent.getStringExtra("pseudo")
+
         // Set up RecyclerView and adapter
         restaurantList = findViewById(R.id.restaurant_recycler_view)
         restaurantList.layoutManager = LinearLayoutManager(this)
-        restaurantAdapter = RestaurantAdapter(mutableListOf())
+        restaurantAdapter = RestaurantAdapter(mutableListOf(), pseudo ?: "")
         restaurantList.adapter = restaurantAdapter
 
         // Load first page of data
