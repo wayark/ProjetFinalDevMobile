@@ -8,9 +8,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.projetfinaldevmobile_lucasguenotmerlin.fragment.HomeFragment
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.activity_connexion.*
 
 class Connexion: AppCompatActivity() {
 
@@ -21,11 +23,10 @@ class Connexion: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_connexion)
 
-        val button = findViewById<Button>(R.id.btnConnexion)
-        button.setOnClickListener {
+        btnConnexion.setOnClickListener {
 
-            val pseudo = findViewById<EditText>(R.id.pseudo).text.toString()
-            val password = findViewById<EditText>(R.id.password).text.toString()
+            val pseudo = pseudo.text.toString()
+            val password = password.text.toString()
 
             myRef.orderByChild("pseudo")
                 .addListenerForSingleValueEvent(object : ValueEventListener {
@@ -40,7 +41,7 @@ class Connexion: AppCompatActivity() {
                                         return
                                     }
                                     // L'utilisateur existe, lance RestaurantListActivity avec pseudo en extra
-                                    val intent = Intent(this@Connexion, RestaurantListActivity::class.java)
+                                    val intent = Intent(this@Connexion, MainActivity::class.java)
                                     intent.putExtra("pseudo", pseudo)
                                     startActivity(intent)
                                     return
@@ -52,7 +53,7 @@ class Connexion: AppCompatActivity() {
                             myRef.push().setValue(utilisateur)
 
                             // Lance RestaurantListActivity avec pseudo en extra
-                            val intent = Intent(this@Connexion, RestaurantListActivity::class.java)
+                            val intent = Intent(this@Connexion, MainActivity::class.java)
                             intent.putExtra("pseudo", pseudo)
                             startActivity(intent)
                         } else {
@@ -61,7 +62,7 @@ class Connexion: AppCompatActivity() {
                             myRef.push().setValue(utilisateur)
 
                             // Lance RestaurantListActivity avec pseudo en extra
-                            val intent = Intent(this@Connexion, RestaurantListActivity::class.java)
+                            val intent = Intent(this@Connexion, MainActivity::class.java)
                             intent.putExtra("pseudo", pseudo)
                             startActivity(intent)
                         }

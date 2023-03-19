@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.projetfinaldevmobile_lucasguenotmerlin.*
 import com.example.projetfinaldevmobile_lucasguenotmerlin.API_KEY
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_connexion.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,6 +28,7 @@ class HomeFragment : Fragment() {
     private var isLoading = false
     private var isLastPage = false
     private var currentPage = 1
+    private var pseudo: String? = null
 
     private val api = Retrofit.Builder()
         .baseUrl("https://maps.googleapis.com")
@@ -40,9 +42,11 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.activity_restaurant_list, container, false)
         val context = container?.context
 
+        Log.d("HomeFragment", "Pseudo: $pseudo")
+
         restaurantList = view.findViewById(R.id.restaurant_recycler_view)
         restaurantList.layoutManager = LinearLayoutManager(context)
-        restaurantAdapter = RestaurantAdapter(mutableListOf())
+        restaurantAdapter = RestaurantAdapter(mutableListOf(), pseudo?:"")
         restaurantList.adapter = restaurantAdapter
 
         // Load first page of data
@@ -118,5 +122,10 @@ class HomeFragment : Fragment() {
 
         }
     }
+
+    fun setPseudo(pseudo: String) {
+        this.pseudo = pseudo
+    }
+
 
 }

@@ -31,7 +31,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".RestaurantDetailActivity" />
-        <activity android:name=".RestaurantListActivity" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

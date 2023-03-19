@@ -18,6 +18,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.item_restaurant.view.*
 
 class RestaurantAdapter(private val restaurants: MutableList<Place>, private val pseudo: String) : RecyclerView.Adapter<RestaurantViewHolder>() {
 
@@ -43,32 +44,33 @@ class RestaurantAdapter(private val restaurants: MutableList<Place>, private val
 
 class RestaurantViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    private val restaurantImage: ImageView = itemView.findViewById(R.id.restaurant_image)
+    private val restaurantImage: ImageView = itemView.restaurant_image
 
     fun bind(restaurant: Place, pseudo: String) {
         // Bind restaurant data to view
-        itemView.findViewById<TextView>(R.id.restaurant_name).text = restaurant.name
-        itemView.findViewById<TextView>(R.id.restaurant_address).text = restaurant.formatted_address
+        itemView.restaurant_name.text = restaurant.name
+        itemView.restaurant_address.text = restaurant.formatted_address
         if (restaurant.opening_hours?.open_now == true){
-            itemView.findViewById<TextView>(R.id.restaurant_open_now).text = "Ouvert"
-            itemView.findViewById<TextView>(R.id.restaurant_open_now).background = itemView.resources.getDrawable(R.drawable.rounded_corner)
+            itemView.restaurant_open_now.text = "Ouvert"
+            itemView.restaurant_open_now.background = itemView.resources.getDrawable(R.drawable.rounded_corner)
         } else {
-            itemView.findViewById<TextView>(R.id.restaurant_open_now).text = "Fermé"
-            itemView.findViewById<TextView>(R.id.restaurant_open_now).background = itemView.resources.getDrawable(R.drawable.rounded_corner_red)
+            itemView.restaurant_open_now.text = "Fermé"
+            itemView.restaurant_open_now.background = itemView.resources.getDrawable(R.drawable.rounded_corner_red)
         }
         // Load restaurant image using Picasso
         Log.d("RestaurantViewHolder", "Loading image for ${restaurant.name} from ${restaurant.photos?.get(0)?.getUrl()}")
         val photoUrl = restaurant.photos?.get(0)?.getUrl()?.toString()
         Picasso.get().load(photoUrl).into(restaurantImage)
 
-        Picasso.get().load(photoUrl).into(itemView.findViewById<ImageView>(R.id.profileButton))
+        Picasso.get().load(photoUrl).into(itemView.profileButton)
 
+        Log.d("ADAPTER", "Pseudo : $pseudo")
 
 
         // Handle click listeners on buttons
         val database = Firebase.database("https://devmobile-877ca-default-rtdb.europe-west1.firebasedatabase.app/").reference
         val restLikeRef = database.child("restLike")
-        val likeButton = itemView.findViewById<ImageView>(R.id.likeButton)
+        val likeButton = itemView.likeButton
         // Set the likeButton image
         restLikeRef
             .addListenerForSingleValueEvent(object : ValueEventListener {
@@ -132,10 +134,7 @@ class RestaurantViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 })
         }
 
-
-
-        // itemView.findViewById<Button>(R.id.like_button).setOnClickListener { /* handle like button click */ }
-        itemView.findViewById<ImageView>(R.id.profileButton).setOnClickListener {
+        itemView.profileButton.setOnClickListener {
             val intent = Intent(itemView.context, RestaurantDetailActivity::class.java)
             intent.putExtra("place_id", restaurant.place_id)
             itemView.context.startActivity(intent)
