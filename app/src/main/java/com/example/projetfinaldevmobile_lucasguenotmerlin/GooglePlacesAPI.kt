@@ -21,4 +21,12 @@ interface GooglePlacesAPI {
         @Query("key") apiKey: String
     ): Call<PlaceDetailsResult>
 
+    // getRestaurantById
+    @GET("/maps/api/place/details/json")
+    fun getRestaurantById(
+        @Query("place_id") placeId: String,
+        @Query("fields") fields: String = "place_id,name,formatted_address,photo,opening_hours",
+        @Query("key") apiKey: String
+    ): Call<PlaceDetailsResult>
+
 }

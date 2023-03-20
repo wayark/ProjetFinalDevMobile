@@ -41,9 +41,7 @@ class HomeFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.activity_restaurant_list, container, false)
         val context = container?.context
-
-        Log.d("HomeFragment", "Pseudo: $pseudo")
-
+        
         restaurantList = view.findViewById(R.id.restaurant_recycler_view)
         restaurantList.layoutManager = LinearLayoutManager(context)
         restaurantAdapter = RestaurantAdapter(mutableListOf(), pseudo?:"")

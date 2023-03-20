@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         if (pseudo != null) {
             homeFragment.setPseudo(pseudo)
+            favoriteFragment.setPseudo(pseudo)
         }
 
         makeCurrentFragment(homeFragment)
