@@ -6,6 +6,7 @@
     android:background="@color/black">
 
     <LinearLayout
+        android:id="@+id/restaurant_like_container"
         android:layout_width="match_parent"
         android:layout_height="190dp"
         android:orientation="horizontal"

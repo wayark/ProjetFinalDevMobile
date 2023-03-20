@@ -48,6 +48,11 @@ class Connexion: AppCompatActivity() {
                                 }
                             }
 
+                            if (pseudo == "" || password == "") {
+                                // Le pseudo ou le mot de passe est vide
+                                Toast.makeText(this@Connexion, "Veuillez remplir tous les champs", Toast.LENGTH_SHORT).show()
+                                return
+                            }
                             // Si on arrive ici, l'utilisateur n'a pas été trouvé dans la base de données, on le créé
                             val utilisateur = Utilisateur(pseudo, password)
                             myRef.push().setValue(utilisateur)
@@ -72,6 +77,16 @@ class Connexion: AppCompatActivity() {
                         Log.e(TAG, "onCancelled", error.toException())
                     }
                 })
+        }
+
+        btnInvite.setOnClickListener {
+            val intent = Intent(this@Connexion, MainActivity::class.java)
+            // Generate a random id
+            val id = (0..100000).random()
+            val idString = id.toString()
+
+            intent.putExtra("pseudo", idString)
+            startActivity(intent)
         }
     }
 }

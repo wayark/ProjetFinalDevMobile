@@ -138,5 +138,11 @@ class RestaurantLikeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemVie
                     }
                 })
         }
+
+        itemView.restaurant_like_container.setOnClickListener {
+            val intent = Intent(itemView.context, RestaurantDetailActivity::class.java)
+            intent.putExtra("place_id", restaurant.place_id)
+            itemView.context.startActivity(intent)
+        }
     }
 }
