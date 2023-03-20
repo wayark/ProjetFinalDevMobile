@@ -6,7 +6,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Account">Mon Compte</string>
-    <string name="AccountName">NomDuCompte</string>
+    <string name="AccountName">Invité</string>
     <string name="email">Email</string>
     <string name="ChangePassword">Changer de mot de passe</string>
+    <string name="newPassword">Nouveau mot de passe</string>
 </resources>

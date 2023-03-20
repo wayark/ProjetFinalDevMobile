@@ -13,7 +13,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/myAccount"
+            android:id="@+id/my_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Account"
@@ -48,13 +48,12 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/account"
                 android:scaleType="centerCrop"
-                android:background="@drawable/circle"
              />
 
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/accountNickname"
+            android:id="@+id/account_nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/AccountName"
@@ -68,26 +67,30 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintVertical_bias="0.01"/>
 
-        <TextView
-            android:id="@+id/accountMail"
+        <EditText
+            android:id="@+id/password_input"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/email"
-            android:textSize="20sp"
+            android:ems="10"
+            android:hint="@string/newPassword"
+            android:textColorHint="@color/grey"
+            android:backgroundTint="@color/ColorTert"
             android:textColor="@color/ColorTert"
-            app:layout_constraintTop_toBottomOf="@id/accountNickname"
+            android:inputType="textPassword"
+            app:layout_constraintTop_toBottomOf="@+id/account_nickname"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintVertical_bias="0.02"/>
+            app:layout_constraintVertical_bias="0.02"
+            />
 
         <Button
+            android:id="@+id/change_password_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/ColorSec"
             android:text="@string/ChangePassword"
-            app:layout_constraintTop_toBottomOf="@+id/accountMail"
+            app:layout_constraintTop_toBottomOf="@id/password_input"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -43,6 +43,8 @@ class Connexion: AppCompatActivity() {
                                     // L'utilisateur existe, lance RestaurantListActivity avec pseudo en extra
                                     val intent = Intent(this@Connexion, MainActivity::class.java)
                                     intent.putExtra("pseudo", pseudo)
+                                    userSnapshot.key?.let { it1 -> Log.d("userKey", it1) }
+                                    intent.putExtra("userKey", userSnapshot.key)
                                     startActivity(intent)
                                     return
                                 }
